@@ -119,10 +119,11 @@ pub fn update_input<
 pub fn update_joystick(
     mut touch_events: EventReader<TouchInput>,
     mut send_values: EventWriter<InputEvent>,
+    ui_scale: Res<UiScale>,
 ) {
     let touches = touch_events
         .iter()
-        .map(|e| (e.id, e.phase, e.position))
+        .map(|e| (e.id, e.phase, e.position / ui_scale.scale as f32))
         .collect::<Vec<(u64, TouchPhase, Vec2)>>();
 
     for (id, phase, pos) in &touches {
@@ -147,10 +148,11 @@ pub fn update_joystick_by_mouse(
     mouse_button_input: Res<Input<MouseButton>>,
     mut mousebtn_evr: EventReader<MouseButtonInput>,
     mut send_values: EventWriter<InputEvent>,
+    ui_scale: Res<UiScale>,
     windows: Query<&Window, With<PrimaryWindow>>,
 ) {
     let window = windows.single();
-    let pos = window.cursor_position().unwrap_or(Vec2::ZERO);
+    let pos = (window.cursor_position() ).unwrap_or(Vec2::ZERO) / ui_scale.scale as f32;
 
     for mousebtn in mousebtn_evr.iter() {
         // End drag
