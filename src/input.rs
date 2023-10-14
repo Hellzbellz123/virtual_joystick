@@ -152,7 +152,7 @@ pub fn update_joystick_by_mouse(
     windows: Query<&Window, With<PrimaryWindow>>,
 ) {
     let window = windows.single();
-    let pos = (window.cursor_position() ).unwrap_or(Vec2::ZERO) / ui_scale.scale as f32;
+    let pos = (window.cursor_position()).unwrap_or(Vec2::ZERO) / ui_scale.scale as f32;
 
     for mousebtn in mousebtn_evr.iter() {
         // End drag

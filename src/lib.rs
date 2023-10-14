@@ -14,7 +14,8 @@ mod joystick;
 pub use behaviour::{VirtualJoystickAxis, VirtualJoystickType};
 use input::{run_if_pc, update_input, update_joystick, update_joystick_by_mouse, InputEvent};
 pub use joystick::{
-    TintColor, VirtualJoystickBundle, VirtualJoystickInteractionArea, VirtualJoystickNode,VirtualJoystickKnob
+    TintColor, VirtualJoystickBundle, VirtualJoystickInteractionArea, VirtualJoystickKnob,
+    VirtualJoystickNode,
 };
 
 use joystick::extract_joystick_node;
