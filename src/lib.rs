@@ -20,6 +20,9 @@ pub use joystick::{
 
 use joystick::extract_joystick_node;
 
+/// adds virtual joystick systems with query filters for `S`
+///
+/// `S` must be S: Hash + Sync + Send + Clone + Default + Reflect + TypePath + FromReflect
 #[derive(Default)]
 pub struct VirtualJoystickPlugin<S> {
     _marker: PhantomData<S>,
